@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wangari Studio — by Angel Wangari</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== Palette ========== */
+    :root{
+      --p1: #D96C80; /* rosy pink */
+      --p2: #BF2A52; /* deep raspberry */
+      --p3: #BFB74B; /* muted gold */
+      --p4: #F2E9CE; /* warm cream */
+      --p5: #F2AE2E; /* golden amber */
+
+      --bg: var(--p4);
+      --card-bg: #fff;
+      --ink: #3a2b2b;
+    }
+
+    /* ========== Base ========== */
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--bg) 0%, #eaf0ed 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    a{color:var(--p2); text-decoration:none}
+
+    /* ========== Layout ========== */
+    .container{max-width:980px;margin:0 auto;padding:40px 20px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .brand{display:flex;align-items:center;gap:12px}
+
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--p1),var(--p2));
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:Patrick Hand, Inter;
+      box-shadow:0 6px 18px rgba(189,60,80,0.12);
+    }
+    .brand h1{font-family:Patrick Hand;margin:0;font-size:20px}
+    .brand small{display:block;font-size:12px;color:#6b5b5b}
+
+    nav a{margin-left:14px;font-weight:600;color:var(--p2)}
+
+    /* ========== HERO ========== */
+    .hero{
+      background: repeating-linear-gradient(90deg, rgba(255,255,255,0.25) 0 60px, rgba(255,255,255,0.06) 60px 120px),
+                  linear-gradient(180deg, rgba(217,108,128,0.06), rgba(242,233,206,0.03));
+      border-radius:18px;padding:44px;position:relative;overflow:hidden;margin-bottom:32px;
+    }
+    .hero-grid{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:center}
+
+    .hero-intro h2{font-family:Patrick Hand;font-size:36px;margin:0;color:var(--p2);line-height:1.05}
+    .hero-intro p{margin-top:10px;color:#6a5b5b;font-size:16px}
+    .cta-row{margin-top:18px}
+    .btn{display:inline-block;background:var(--p2);color:white;padding:10px 18px;border-radius:999px;font-weight:700;box-shadow:0 8px 20px rgba(191,42,82,0.12)}
+
+    /* stickers */
+    .sticker{position:absolute;transform:rotate(-8deg);opacity:0.95}
+    .st1{top:18px;left:18px;width:82px}
+    .st2{top:38px;right:36px;width:64px}
+    .st3{bottom:18px;left:20px;width:120px}
+    .st4{bottom:24px;right:80px;width:78px}
+
+    /* hero illustration card */
+    .hero-card{background:linear-gradient(180deg,#fff,#fff);border-radius:14px;padding:18px;box-shadow:0 8px 28px rgba(73,56,56,0.06);display:flex;flex-direction:column;align-items:center}
+    .hero-card .ill{width:100%;height:220px;background:repeating-linear-gradient(45deg, #f8f0ea 0 24px, #fff 24px 48px);border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .hero-card .ill svg{width:200px;height:auto;opacity:0.95}
+
+    /* scallop divider */
+    .scallop{height:26px;background:linear-gradient(180deg,var(--p4),#fff);margin-top:-8px;margin-bottom:18px;border-bottom-left-radius:18px;border-bottom-right-radius:18px}
+
+    /* ========== SERVICES / PROJECTS ========== */
+    .section{padding:34px 0}
+    .section h3{font-family:Patrick Hand;margin:0 0 12px 0;color:var(--p2)}
+
+    .services{display:flex;gap:18px;flex-wrap:wrap}
+    .service{flex:1 1 28%;min-width:190px;background:linear-gradient(180deg,#fff,#fff);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.04);position:relative;transition:transform .25s ease}
+    .service:hover{transform:translateY(-8px)}
+    .service .title{font-weight:700;margin-bottom:8px}
+    .service .meta{font-size:13px;color:#6a5b5b}
+
+    /* projects polaroids */
+    .projects-wrap{display:flex;flex-direction:column;gap:18px}
+    .polaroids{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .polaroid{width:220px;background:var(--card-bg);padding:12px;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,0.08);transform-origin:center;transition:transform .22s ease}
+    .polaroid img{width:100%;border-radius:6px}
+    .polaroid:hover{transform:rotate(-6deg) translateY(-8px)}
+
+    /* ========== ABOUT ========== */
+    .about{display:flex;gap:22px;align-items:center}
+    .about .bio{flex:1}
+    .bio p{color:#5e4f4f}
+    .about-ill{width:240px;background:linear-gradient(180deg,var(--p1),var(--p4));border-radius:14px;padding:12px;box-shadow:0 12px 30px rgba(185,66,90,0.08)}
+
+    /* ========== SKILLS ========== */
+    .skills{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .skill{background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 18px rgba(0,0,0,0.04)}
+    .skill-name{font-weight:700;margin-bottom:8px}
+    .bar{background:#efe9df;height:12px;border-radius:10px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--p1),var(--p5));width:0}
+
+    /* ========== FOOTER ========== */
+    footer{margin-top:36px;padding:24px 0;text-align:center;color:#6b5b5b}
+    .made{font-weight:600}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero-grid{grid-template-columns:1fr}
+      .container{padding:24px 18px}
+      .polaroids{justify-content:flex-start}
+      .skills{grid-template-columns:1fr}
+      .services{flex-direction:column}
+    }
+
+    /* little hand-drawn accents */
+    .handy{font-family:Patrick Hand}
+
+    /* entrance animations */
+    .fadeInUp{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+    .is-visible{opacity:1;transform:none}
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo handy">WS</div>
+        <div>
+          <h1 class="handy">Wangari Studio</h1>
+          <small>by Angel Wangari</small>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-intro">
+          <h2 class="handy">Designing creative brands with heart.</h2>
+          <p>Playful, cozy, and handcrafted visuals for makers, dreamers & storytellers.</p>
+
+          <div class="cta-row">
+            <a class="btn" href="#projects">See recent work</a>
+            <a style="margin-left:12px;color:var(--p2);font-weight:700" href="#about">Meet Angel</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="ill">
+            <!-- simple illustration SVG (hand-drawn style placeholder) -->
+            <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" stroke="rgba(58,43,43,0.9)" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="8" y="8" width="224" height="124" rx="10" fill="#fff" stroke="none" opacity="0.06"></rect>
+                <path d="M40 86c10-18 34-28 60-18 30 12 54 0 72-8" stroke-width="2.4"/>
+                <circle cx="56" cy="46" r="10" fill="var(--p1)" stroke="none"/>
+                <circle cx="160" cy="36" r="8" fill="var(--p3)" stroke="none"/>
+                <path d="M120 96c8-6 16-10 24-8" stroke-width="2.8"/>
+              </g>
+            </svg>
+          </div>
+          <div style="margin-top:12px;text-align:center">
+            <div class="handy" style="font-weight:700;color:var(--p2)">Wangari Studio</div>
+            <div style="font-size:13px;color:#6f5f5f;margin-top:6px">Branding, illustrations & cozy web</div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- stickers -->
+      <img class="sticker st1" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><g><rect rx='18' width='120' height='120' fill='%23F2E9CE'/><text x='18' y='72' font-size='28' fill='%23BF2A52' font-family='Patrick Hand'>✨</text></g></svg>" alt="sticker"/>
+      <img class="sticker st2" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><g><rect rx='18' width='80' height='80' fill='%23D96C80'/><text x='18' y='52' font-size='28' fill='%23fff' font-family='Patrick Hand'>♥</text></g></svg>" />
+      <img class="sticker st3" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='120'><g><rect rx='14' width='160' height='120' fill='%23F2AE2E'/><text x='28' y='78' font-size='22' fill='%23000' font-family='Patrick Hand'>cat</text></g></svg>" />
+      <img class="sticker st4" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='80'><g><rect rx='12' width='100' height='80' fill='%23BFB74B'/><text x='18' y='50' font-size='20' fill='%23000' font-family='Patrick Hand'>✏️</text></g></svg>" />
+
+    </section>
+
+    <div class="scallop"></div>
+
+    <!-- SERVICES (small highlights) -->
+    <section class="section">
+      <div class="section-inner">
+        <h3 class="handy">Creative Services</h3>
+        <div class="services">
+          <div class="service fadeInUp">
+            <div class="title">Brand Identity</div>
+            <div class="meta">Logo, color, moodboard & packaging</div>
+          </div>
+          <div class="service fadeInUp">
+            <div class="title">Illustration</div>
+            <div class="meta">Hand-drawn stickers, icons & patterns</div>
+          </div>
+          <div class="service fadeInUp">
+            <div class="title">Web Design</div>
+            <div class="meta">Cozy single-page sites & portfolios</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h3 class="handy">Recent Projects</h3>
+      <div class="projects-wrap">
+        <div class="polaroids">
+          <div class="polaroid fadeInUp"><img src="https://picsum.photos/seed/1/600/400" alt="project"/></div>
+          <div class="polaroid fadeInUp"><img src="https://picsum.photos/seed/2/600/400" alt="project"/></div>
+          <div class="polaroid fadeInUp"><img src="https://picsum.photos/seed/3/600/400" alt="project"/></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h3 class="handy">I'm Angel</h3>
+      <div class="about">
+        <div class="bio fadeInUp">
+          <p>Hi — I'm <strong class="handy">Angel Wangari</strong>, a creative who loves making warm, playful brands. I mix hand-drawn illustration, color, and cozy layouts to help makers tell their stories. I design stickers, packaging, and small single-page websites that feel like a hug.</p>
+          <p style="margin-top:10px">Available for commissions. Let’s make something cute together.</p>
+        </div>
+
+        <div class="about-ill fadeInUp">
+          <!-- placeholder illustration -->
+          <svg viewBox="0 0 200 160" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="rgba(58,43,43,0.95)" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="6" width="188" height="148" rx="12" fill="#fff" stroke="none" opacity="0.02" />
+              <path d="M40 110c18-12 46-22 80-8" stroke-width="2.6"/>
+              <circle cx="54" cy="54" r="22" fill="var(--p1)" stroke="none" />
+              <path d="M116 86c8-12 18-18 36-12" stroke-width="2.4"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <h3 class="handy">Skills</h3>
+      <div class="skills">
+        <div class="skill fadeInUp">
+          <div class="skill-name">Branding</div>
+          <div class="bar"><i data-width="85%"></i></div>
+        </div>
+        <div class="skill fadeInUp">
+          <div class="skill-name">Illustration</div>
+          <div class="bar"><i data-width="82%"></i></div>
+        </div>
+        <div class="skill fadeInUp">
+          <div class="skill-name">Web Design</div>
+          <div class="bar"><i data-width="78%"></i></div>
+        </div>
+        <div class="skill fadeInUp">
+          <div class="skill-name">Packaging</div>
+          <div class="bar"><i data-width="72%"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h3 class="handy">Get in touch</h3>
+      <p style="color:#6b5b5b">Interested in working together? Say hi on <a href="#">Instagram</a> or send an <a href="mailto:angel@example.com">email</a>.</p>
+    </section>
+
+    <footer>
+      <div class="made">Made with 💛 by Angel Wangari • Wangari Studio</div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Simple reveal on scroll for items with .fadeInUp
+    const faders = document.querySelectorAll('.fadeInUp');
+    const obs = new IntersectionObserver((entries) =>{
+      entries.forEach(entry =>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          // animate skill bars when visible
+          const bar = entry.target.querySelector('.bar > i');
+          if(bar && bar.dataset.width){
+            setTimeout(()=>{ bar.style.width = bar.dataset.width }, 120);
+          }
+        }
+      });
+    },{threshold:0.15});
+
+    faders.forEach(f => obs.observe(f));
+
+    // tiny floating animation for stickers
+    const stickers = document.querySelectorAll('.sticker');
+    stickers.forEach((s,i)=>{
+      const t = 2000 + i*600;
+      s.animate([{transform:'translateY(0)'},{transform:'translateY(-8px)'},{transform:'translateY(0)'}],{duration:t,iterations:Infinity,easing:'ease-in-out'});
+    });
+
+  </script>
+</body>
+</html>
